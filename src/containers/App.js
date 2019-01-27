@@ -2,17 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import logo from '../assets/svg/logo.svg';
 import './App.css';
-import { fetchPortfolio } from '../services/state/actions/portfolio.action';
+import { fetchPortfolio, getPortfolioThunk } from '../services/state/actions/portfolio.action';
 import Portfolio from './portfolio/Portfolio'
 
 class App extends Component {
-  state = {
-    portfolio: {}
-  };
 
-  componentDidMount() {
-    this.props.dispatch(fetchPortfolio());
-  }
+  componentDidMount() {}
+
   render() {
     return (
       <div className="App">
@@ -24,11 +20,17 @@ class App extends Component {
     );
   }
 }
-
-function mapStateToProps(state) {
+const mapStateToProps = state => {
+ console.log(state);
   return {
     portfolio: state.portfolio
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps)(App);
+const mapDispatch = dispatch => {
+  dispatch(getPortfolioThunk());
+  return {}
+};
+
+export default connect(mapStateToProps, mapDispatch)(App);
+

@@ -1,11 +1,18 @@
-import { combineReducers } from 'redux';
+import {applyMiddleware, combineReducers, createStore} from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import PortfolioReducer from './portfolio.reducer';
+import thunkMiddleware from 'redux-thunk'
+import React from "react";
+
 
 const rootReducer = combineReducers({
-  Portfolio: PortfolioReducer,
-  AboutMe: "Some Description"
+  Portfolio: PortfolioReducer
 });
 
-export default rootReducer;
-
-// good example https://codesandbox.io/s/j3378m4v3y
+const composeEnhancers = composeWithDevTools({});
+export default createStore(
+  rootReducer,
+  composeEnhancers(
+    applyMiddleware(thunkMiddleware)
+  )
+);

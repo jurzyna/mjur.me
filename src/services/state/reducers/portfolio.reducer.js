@@ -1,7 +1,4 @@
-
-import { FETCH_PORTFOLIO } from '../actions/portfolio.action';
-
-
+import { GET_PORTFOLIO } from '../actions/portfolio.action';
 
 const initialState = {
   items: [],
@@ -9,10 +6,9 @@ const initialState = {
   error: null
 };
 
-
 export default function (state = initialState, action) {
   switch (action.type) {
-    case FETCH_PORTFOLIO:
+    case GET_PORTFOLIO:
       return {
         ...state,
         loading: false,

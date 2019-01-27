@@ -4,17 +4,13 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import Router from './containers/Router';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import reducers from './services/state/reducers';
+import store from './services/state/reducers';
 
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+// const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(
-    reducers,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )}>
+  <Provider store={store}>
     <Router />
   </Provider>
   ,
