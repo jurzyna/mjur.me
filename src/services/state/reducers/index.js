@@ -6,7 +6,7 @@ import React from "react";
 
 
 const rootReducer = combineReducers({
-  Portfolio: PortfolioReducer
+  portfolio: PortfolioReducer
 });
 
 const composeEnhancers = composeWithDevTools({});
